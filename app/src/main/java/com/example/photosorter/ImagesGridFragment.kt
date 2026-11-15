@@ -1,6 +1,7 @@
 package com.example.photosorter
 
 import android.content.Context
+import android.icu.text.Transliterator.Position
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.photosorter.databinding.FragmentImagesGridBinding
 import kotlinx.coroutines.CoroutineScope
@@ -34,16 +36,25 @@ class ImagesGridFragment : Fragment() {
         val viewModel: FragmentCommunicator by activityViewModels()
 
 
+
+        val transitionInterface:TransitionBetweenFragments = object : TransitionBetweenFragments {
+            override fun openImage(images: List<DocumentFile>,position:Int) {
+                viewModel.images = images
+                viewModel.position = position
+                findNavController().navigate(R.id.action_imagesGridFragment_to_imageShowcaseFragment)
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             val uri = viewModel.uri ?: return@launch
 
             val list_images = withContext(Dispatchers.IO){
-                getImagesFromFolder(requireContext().applicationContext, uri )
+                getImagesFromFolder(requireContext().applicationContext, uri)
             }
             Log.i("DATA_IMAGES", list_images.toString())
 
             binding.recycleviewImagesGrid.layoutManager = GridLayoutManager(context,2)
-            val adapter = AdapterImagesGrid(list_images)
+            val adapter = AdapterImagesGrid(list_images,transitionInterface)
             binding.recycleviewImagesGrid.adapter = adapter
         }
 
@@ -71,5 +82,9 @@ class ImagesGridFragment : Fragment() {
 //            val extension = file.name?.substringAfterLast('.', "")?.lowercase()
 //            extension in imageExtensions
         }
+    }
+
+    interface TransitionBetweenFragments{
+        fun openImage(images:List<DocumentFile>,position: Int)
     }
 }

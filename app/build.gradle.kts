@@ -51,6 +51,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.8.7")
     implementation("io.coil-kt:coil:2.7.0")
 
+    implementation("io.getstream:photoview:1.0.3")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

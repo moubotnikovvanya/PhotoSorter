@@ -18,5 +18,13 @@
         android:id="@+id/imagesGridFragment"
         android:name="com.example.photosorter.ImagesGridFragment"
         android:label="fragment_images_grid"
-        tools:layout="@layout/fragment_images_grid" />
+        tools:layout="@layout/fragment_images_grid" >
+        <action
+            android:id="@+id/action_imagesGridFragment_to_imageShowcaseFragment"
+            app:destination="@id/imageShowcaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageShowcaseFragment"
+        android:name="com.example.photosorter.ImageShowcaseFragment"
+        android:label="ImageShowcaseFragment" />
 </navigation>

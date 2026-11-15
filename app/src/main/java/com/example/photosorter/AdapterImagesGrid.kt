@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.documentfile.provider.DocumentFile
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.photosorter.databinding.RecycleviewItemImageBinding
 
-class AdapterImagesGrid(val images:List<DocumentFile>):RecyclerView.Adapter<AdapterImagesGrid.MyViewHolder>(){
+class AdapterImagesGrid(val images:List<DocumentFile>,val transitionInterface:ImagesGridFragment.TransitionBetweenFragments):RecyclerView.Adapter<AdapterImagesGrid.MyViewHolder>(){
 
     class MyViewHolder(val binding: RecycleviewItemImageBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -30,5 +31,10 @@ class AdapterImagesGrid(val images:List<DocumentFile>):RecyclerView.Adapter<Adap
             placeholder(android.R.drawable.ic_menu_gallery) // Заглушка во время загрузки
             error(android.R.drawable.ic_delete) // Иконка при ошибке чтения
         }
+
+        holder.binding.image.setOnClickListener(){
+            transitionInterface.openImage(images,position)
+        }
+
     }
 }
