@@ -9,3 +9,8 @@ class FragmentCommunicator:ViewModel() {
     var images: List<DocumentFile>? = null
     var position: Int? = null
 }
+
+data class ButtonSettings(
+    val title:String,
+    val targetDir:DocumentFile
+)

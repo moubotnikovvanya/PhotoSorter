@@ -1,7 +1,6 @@
-package com.example.photosorter
+package com.example.photosorter.fragments
 
 import android.content.Context
-import android.icu.text.Transliterator.Position
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -14,13 +13,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.photosorter.adapters.AdapterImagesGrid
+import com.example.photosorter.FragmentCommunicator
+import com.example.photosorter.R
 import com.example.photosorter.databinding.FragmentImagesGridBinding
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 
 class ImagesGridFragment : Fragment() {
@@ -37,7 +36,7 @@ class ImagesGridFragment : Fragment() {
 
 
 
-        val transitionInterface:TransitionBetweenFragments = object : TransitionBetweenFragments {
+        val transitionInterface: TransitionBetweenFragments = object : TransitionBetweenFragments {
             override fun openImage(images: List<DocumentFile>,position:Int) {
                 viewModel.images = images
                 viewModel.position = position

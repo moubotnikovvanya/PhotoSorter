@@ -1,16 +1,15 @@
-package com.example.photosorter
+package com.example.photosorter.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.documentfile.provider.DocumentFile
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.photosorter.databinding.RecycleviewItemImageBinding
+import com.example.photosorter.fragments.ImagesGridFragment
 
-class AdapterImagesGrid(val images:List<DocumentFile>,val transitionInterface:ImagesGridFragment.TransitionBetweenFragments):RecyclerView.Adapter<AdapterImagesGrid.MyViewHolder>(){
+class AdapterImagesGrid(val images:List<DocumentFile>,val transitionInterface: ImagesGridFragment.TransitionBetweenFragments):RecyclerView.Adapter<AdapterImagesGrid.MyViewHolder>(){
 
     class MyViewHolder(val binding: RecycleviewItemImageBinding): RecyclerView.ViewHolder(binding.root)
 

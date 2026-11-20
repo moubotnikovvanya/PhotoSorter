@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment"
+    tools:context=".fragments.HomeFragment"
     android:id="@+id/frameLayout">
 
     <Button
@@ -18,5 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="149dp" />
+
+    <Button
+        android:id="@+id/buttonSetUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:text="Настроить кнопки"
+        app:layout_constraintBottom_toTopOf="@+id/button_get_folder"
+        app:layout_constraintEnd_toEndOf="@+id/button_get_folder"
+        app:layout_constraintStart_toStartOf="@+id/button_get_folder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

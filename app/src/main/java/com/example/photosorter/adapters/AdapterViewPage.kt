@@ -1,13 +1,10 @@
-package com.example.photosorter
+package com.example.photosorter.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.RecyclerView
 import com.example.photosorter.databinding.ItemImageShowcaseBinding
-import com.example.photosorter.databinding.RecycleviewItemImageBinding
 
 class AdapterViewPage(private val images:List<DocumentFile>):
     RecyclerView.Adapter<AdapterViewPage.ImageViewHolder>() {
@@ -28,4 +25,12 @@ class AdapterViewPage(private val images:List<DocumentFile>):
         holder.binding.imageView.setImageURI(image.uri)
     }
 
+    fun getFileAt(position: Int): DocumentFile? {
+        return images.getOrNull(position)
+    }
+
+//    fun removeAt(position: Int) {
+//        val updated = images.toMutableList().apply { removeAt(position) }
+//        submitList(updated)
+//    }
 }

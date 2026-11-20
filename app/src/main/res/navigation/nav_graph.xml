@@ -7,16 +7,19 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.photosorter.HomeFragment"
+        android:name="com.example.photosorter.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_imagesGridFragment"
             app:destination="@id/imagesGridFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editButtonsFragment"
+            app:destination="@id/editButtonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/imagesGridFragment"
-        android:name="com.example.photosorter.ImagesGridFragment"
+        android:name="com.example.photosorter.fragments.ImagesGridFragment"
         android:label="fragment_images_grid"
         tools:layout="@layout/fragment_images_grid" >
         <action
@@ -25,6 +28,10 @@
     </fragment>
     <fragment
         android:id="@+id/imageShowcaseFragment"
-        android:name="com.example.photosorter.ImageShowcaseFragment"
+        android:name="com.example.photosorter.fragments.ImageShowcaseFragment"
         android:label="ImageShowcaseFragment" />
+    <fragment
+        android:id="@+id/editButtonsFragment"
+        android:name="com.example.photosorter.fragments.EditButtonsFragment"
+        android:label="EditButtonsFragment" />
 </navigation>
